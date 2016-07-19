@@ -27,7 +27,6 @@ defmodule Gc.Router do
   end
 
   get "/api/energy_threshold" do
-    IO.inspect conn
     {:ok, body, _} = Plug.Conn.read_body(conn)
     {conn, status, response} = ThresholdController.get_current(conn, body)
     send_resp(conn, status, response)
