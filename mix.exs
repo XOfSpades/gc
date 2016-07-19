@@ -14,7 +14,7 @@ defmodule Gc.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [applications: [:logger, :ecto]]
   end
 
   # Dependencies can be Hex packages:
@@ -29,7 +29,9 @@ defmodule Gc.Mixfile do
   defp deps do
     [
       {:plug, "~> 1.1"},
-      {:cowboy, "~> 1.0.0"}
+      {:cowboy, "~> 1.0.0"},
+      {:postgrex, "~> 0.11"},
+      {:ecto, "~> 2.0.0"}
     ]
   end
 end
