@@ -7,3 +7,7 @@ config :gc, Gc.Repo,
   password: "postgres",
   database: "gc_dev",
   pool_size: 10 # The amount of database connections in the pool
+
+config :gc,
+  cowboy_port: 8080
+
