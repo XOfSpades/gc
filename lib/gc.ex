@@ -1,5 +1,6 @@
 defmodule Gc do
   use Application
+  require Logger
 
   def start( _type, _args ) do
     import Supervisor.Spec, warn: false
@@ -13,6 +14,12 @@ defmodule Gc do
   end
 
   def run do
-    { :ok, _ } = Plug.Adapters.Cowboy.http Gc.Router, []
+    { :ok, _ } = Plug.Adapters.Cowboy.http Gc.Router, [], port: server_port
+  end
+
+  defp server_port do
+    port = Application.get_env(:gc, :cowboy_port)
+    Logger.info "Application will be running on port #{port}"
+    port
   end
 end
