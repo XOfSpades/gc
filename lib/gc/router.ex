@@ -9,14 +9,12 @@ defmodule Gc.Router do
   plug :dispatch
 
   post "/api/energy_consumption" do
-    {:ok, body, _} = Plug.Conn.read_body(conn)
-    {conn, status, response} = ConsumptionController.post(conn, body)
+    {conn, status, response} = ConsumptionController.post(conn, get_body(conn))
     send_resp(conn, status, response)
   end
 
   put "/api/energy_threshold" do
-    {:ok, body, _} = Plug.Conn.read_body(conn)
-    {conn, status, response} = ThresholdController.update(conn, body)
+    {conn, status, response} = ThresholdController.update(conn, get_body(conn))
     send_resp(conn, status, response)
   end
 
@@ -30,5 +28,10 @@ defmodule Gc.Router do
     params = Plug.Conn.fetch_query_params(conn).query_params
     {conn, status, response} = ThresholdController.get_current(conn, params)
     send_resp(conn, status, response)
+  end
+
+  defp get_body(conn) do
+    {:ok, body, _} = Plug.Conn.read_body(conn)
+    body |> Poison.decode!
   end
 end
