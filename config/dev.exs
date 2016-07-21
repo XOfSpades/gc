@@ -10,4 +10,3 @@ config :gc, Gc.Repo,
 
 config :gc,
   cowboy_port: 8080
-
