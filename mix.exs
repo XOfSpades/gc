@@ -15,7 +15,7 @@ defmodule Gc.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [
-      applications: [:cowboy, :plug, :logger, :ecto],
+      applications: [:cowboy, :plug, :logger, :ecto, :postgrex],
       mod: {Gc, []}
     ]
   end
@@ -34,7 +34,8 @@ defmodule Gc.Mixfile do
       {:plug, "~> 1.1"},
       {:cowboy, "~> 1.0.0"},
       {:postgrex, "~> 0.11"},
-      {:ecto, "~> 2.0.0"}
+      {:ecto, "~> 2.0.0"},
+      {:poison, "~> 2.2.0"}
     ]
   end
 end
