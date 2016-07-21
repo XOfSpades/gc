@@ -6,6 +6,7 @@ defmodule Gc do
     import Supervisor.Spec, warn: false
 
     children = [
+      supervisor(Gc.Repo, []),
       worker(__MODULE__, [], function: :run)
     ]
 
