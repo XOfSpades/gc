@@ -21,14 +21,14 @@ defmodule Gc.Router do
   end
 
   get "/api/energy_consumption" do
-    {:ok, body, _} = Plug.Conn.read_body(conn)
-    {conn, status, response} = ConsumptionController.get(conn, body)
+    params = Plug.Conn.fetch_query_params(conn).query_params
+    {conn, status, response} = ConsumptionController.get(conn, params)
     send_resp(conn, status, response)
   end
 
   get "/api/energy_threshold" do
-    {:ok, body, _} = Plug.Conn.read_body(conn)
-    {conn, status, response} = ThresholdController.get_current(conn, body)
+    params = Plug.Conn.fetch_query_params(conn).query_params
+    {conn, status, response} = ThresholdController.get_current(conn, params)
     send_resp(conn, status, response)
   end
 end
