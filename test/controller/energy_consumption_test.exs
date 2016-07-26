@@ -16,7 +16,7 @@ defmodule Gc.Controller.EnergyConsumptionTest do
 
   describe("post consumption") do
     test "It responds with 200 OK" do
-      request_body = Gc.EnergyConsumption.to_json(@consumption)
+      request_body = Model.to_json(@consumption)
       conn = conn(:post, "/api/energy_consumption", request_body)
       |> Gc.Router.call(@opts)
 
