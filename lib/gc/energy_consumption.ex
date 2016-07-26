@@ -4,7 +4,6 @@ defmodule Gc.EnergyConsumption do
   alias Ecto.Changeset
 
   schema "energy_consumptions" do
-    field :device_name,  :string
     field :consumption,  :float
     field :from,         Ecto.DateTime
     field :to,           Ecto.DateTime

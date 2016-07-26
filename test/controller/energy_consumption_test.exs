@@ -8,7 +8,6 @@ defmodule Gc.Controller.EnergyConsumptionTest do
 
   @opts Gc.Router.init([])
   @consumption %Gc.EnergyConsumption{
-    device_name: "Some_cryptical_device_name",
     consumption: 42,
     from: "2016-01-01T00:00:00Z",
     to: "2016-01-02T00:00:00Z"

@@ -6,12 +6,12 @@ end
 defimpl Model, for: Gc.EnergyConsumption do
   def to_json(model) do
     model
-    |> Map.take([:device_name, :consumption, :from, :to, :id])
+    |> Map.take([:consumption, :from, :to, :id])
     |> Poison.encode!
   end
 
   def changeset(model, params \\ :empty) do
-    required_fields = [:device_name, :consumption, :from, :to]
+    required_fields = [:consumption, :from, :to]
     model
     |> Ecto.Changeset.cast(params, required_fields)
     |> Ecto.Changeset.validate_required(required_fields)
@@ -45,3 +45,19 @@ defimpl Model, for: Gc.User do
     end
   end
 end
+
+defimpl Model, for: Gc.Device do
+  def to_json(model) do
+    model
+    |> Map.take([:name, :user_id, :id])
+    |> Poison.encode!
+  end
+
+  def changeset(model, params \\ :empty) do
+    required_fields = [:name, :user_id]
+    model
+    |> Ecto.Changeset.cast(params, required_fields)
+    |> Ecto.Changeset.validate_required(required_fields)
+  end
+end
+

@@ -8,7 +8,7 @@ defmodule Gc.Controller.EnergyConsumption do
   end
 
   # Get consumption of device
-  def get(conn, params) do
+  def get(conn, _params) do
     {conn, 200, "{}"}
   end
 end
