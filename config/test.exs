@@ -2,7 +2,7 @@ use Mix.Config
 
 config :comeonin,
   crypto_mod: :bcrypt,
-  bcrypt_log_rounds: 15,
+  bcrypt_log_rounds: 2, # make tests faster
   pbkdf2_rounds: 4
 
 # Configure your database
