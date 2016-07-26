@@ -48,7 +48,7 @@ defmodule Gc.EnergyConsumptionTest do
     test "it seializes a consumption struct" do
       struct = Map.merge(%Gc.EnergyConsumption{}, @valid_attr)
       params = Poison.decode! Model.to_json(struct), keys: :atoms
-      assert params = Map.merge(@valid_attr, %{id: nil})
+      assert params == Map.merge(@valid_attr, %{id: nil})
     end
   end
 end
