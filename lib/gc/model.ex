@@ -26,9 +26,22 @@ defimpl Model, for: Gc.User do
   end
 
   def changeset(model, params \\ :empty) do
-    required_fields = [:email]
+    required_fields = [:email, :password]
     model
     |> Ecto.Changeset.cast(params, required_fields)
     |> Ecto.Changeset.validate_required(required_fields)
+    |> encrypt_password
+  end
+
+  defp encrypt_password(changeset) do
+    password = changeset.params["password"]
+    if is_bitstring(password) do
+      Ecto.Changeset.put_change(
+        changeset,
+        :encrypted_password,
+        Gc.Authenticate.Password.salt_and_hash(password))
+    else
+      Ecto.Changeset.add_error(changeset, :password, "is not a bitstring")
+    end
   end
 end

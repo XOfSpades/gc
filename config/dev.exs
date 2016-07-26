@@ -1,5 +1,10 @@
 use Mix.Config
 
+config :comeonin,
+  crypto_mod: :bcrypt,
+  bcrypt_log_rounds: 15,
+  pbkdf2_rounds: 123_000
+
 # Configure your database
 config :gc, Gc.Repo,
   adapter: Ecto.Adapters.Postgres,

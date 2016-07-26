@@ -35,7 +35,8 @@ defmodule Gc.Mixfile do
       {:cowboy, "~> 1.0.0"},
       {:postgrex, "~> 0.11"},
       {:ecto, "~> 2.0.0"},
-      {:poison, "~> 2.2.0"}
+      {:poison, "~> 2.2.0"},
+      {:comeonin, "~> 2.3"}
     ]
   end
 end
