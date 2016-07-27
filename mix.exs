@@ -33,6 +33,7 @@ defmodule Gc.Mixfile do
     [
       {:plug, "~> 1.1"},
       {:cowboy, "~> 1.0.0"},
+      {:guardian, "~> 0.12.0"},
       {:postgrex, "~> 0.11"},
       {:ecto, "~> 2.0.0"},
       {:poison, "~> 2.2.0"},

@@ -27,6 +27,16 @@ use Mix.Config
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 #
+
+config :guardian, Guardian,
+  allowed_algos: ["HS512"], # optional
+  verify_module: Guardian.JWT,  # optional
+  issuer: "Gc",
+  ttl: { 30, :days },
+  verify_issuer: true, # optional
+  secret_key: "jksdnvkdqnvlk9dbvnlkdqnvnvekvnekqnvlenvlkdvmd4kvovwe",
+  serializer: Gc.Authenticate.GuardianSerializer
+
 import_config "#{Mix.env}.exs"
 
 config :gc, ecto_repos: [Gc.Repo]

@@ -11,4 +11,12 @@ defmodule Gc.User do
 
     timestamps
   end
+
+  def required_fields do
+    [:email, :password]
+  end
+
+  def serialized_fields do
+    [:email, :id]
+  end
 end
