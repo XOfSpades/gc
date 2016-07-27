@@ -11,6 +11,4 @@ defmodule Gc.User do
 
     timestamps
   end
-
-  @required_fields [:email, :password]
 end

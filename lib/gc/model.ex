@@ -6,12 +6,12 @@ end
 defimpl Model, for: Gc.EnergyConsumption do
   def to_json(model) do
     model
-    |> Map.take([:consumption, :from, :to, :id])
+    |> Map.take(Gc.EnergyConsumption.serialized_fields)
     |> Poison.encode!
   end
 
   def changeset(model, params \\ :empty) do
-    required_fields = [:consumption, :from, :to]
+    required_fields = Gc.EnergyConsumption.required_fields
     model
     |> Ecto.Changeset.cast(params, required_fields)
     |> Ecto.Changeset.validate_required(required_fields)

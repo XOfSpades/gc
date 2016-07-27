@@ -9,6 +9,4 @@ defmodule Gc.Device do
 
     timestamps
   end
-
-  @required_fields [:name, :user_id]
 end
