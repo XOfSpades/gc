@@ -12,6 +12,14 @@ defmodule Gc.User do
     timestamps
   end
 
+  def find_by_email(email) do
+    user = Gc.Repo.get_by(Gc.User, email: email) # body["email"]
+    case user do
+      nil -> {:error, "not found"}
+      _ -> {:ok, user}
+    end
+  end
+
   def required_fields do
     [:email, :password]
   end

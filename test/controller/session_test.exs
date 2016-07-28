@@ -28,5 +28,6 @@ defmodule Gc.Controller.SessionTest do
     assert expected_user == response_body["user"]
     refute nil == response_body["expires"]
     refute nil == response_body["jwt"]
+    assert response_body["token_type"] == "Bearer"
   end
 end

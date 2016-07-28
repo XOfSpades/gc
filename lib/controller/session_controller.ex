@@ -1,7 +1,7 @@
 defmodule Gc.Controller.Session do
   def post(conn, body) do
     auth_result =
-      with user <- Gc.Repo.get_by(Gc.User, email: body["email"]),
+      with {:ok, user} <- Gc.User.find_by_email(body["email"]),
            true <- Gc.Authenticate.Password.is_password(
                      body["password"], user.encrypted_password),
       do: {:ok, user}
@@ -23,6 +23,7 @@ defmodule Gc.Controller.Session do
 
   defp login_response_body(user, jwt, expires) do
     user_map = Map.take(user, Gc.User.serialized_fields)
-    Poison.encode!(%{user: user_map, jwt: jwt, expires: expires})
+    Poison.encode!(
+      %{user: user_map, jwt: jwt, token_type: "Bearer", expires: expires})
   end
 end
